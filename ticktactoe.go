@@ -26,7 +26,7 @@ func main() {
 	}
 
 	if hasWinner {
-
+		renderGameboard(board)
 		fmt.Printf("%v hat gewonnen", switchPlayer(activePlayer))
 	}
 
@@ -44,32 +44,6 @@ func renderGameboard(board [][]string) {
 
 func checkLegalMove(field int, board [][]string) bool {
 
-	/*
-		switch field {
-		case 1:
-			return checkField(0, 0, board)
-		case 2:
-			return checkField(0, 1, board)
-		case 3:
-			return checkField(0, 2, board)
-		case 4:
-			return checkField(1, 0, board)
-		case 5:
-			return checkField(1, 1, board)
-		case 6:
-			return checkField(1, 2, board)
-		case 7:
-			return checkField(2, 0, board)
-		case 8:
-			return checkField(2, 1, board)
-		case 9:
-			return checkField(2, 2, board)
-
-		default:
-			return false
-		}
-	*/
-
 	field--
 
 	if field < 9 {
@@ -86,6 +60,7 @@ func checkField(x, y int, board [][]string) bool {
 
 func placeMarker(field int, player string, board [][]string) [][]string {
 
+	field--
 	board[field/3][field%3] = player
 
 	return board
